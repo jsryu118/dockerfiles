@@ -1,0 +1,43 @@
+# version: "3.8"
+services:
+  noetic_x86: 
+    build: 
+      context: .
+      dockerfile: .dockerfiles/ros/Dockerfile.noetic_x86
+      args:
+        - USER=${USER} 
+        - UID=${UID} # user id must be saved to an environment variable, can be done with `export UID=$(id -u)`
+        - GID=${GID} # group id must be saved to an environment variable, can be done with `export GID=$(id -g)`
+    image: jsryu118/ros:noetic
+  
+  humble_x86:
+    build:
+      context: .
+      dockerfile: .dockerfiles/ros/Dockerfile.humble_x86
+      args:
+        - USER=${USER} 
+        - UID=${UID} # user id must be saved to an environment variable, can be done with `export UID=$(id -u)`
+        - GID=${GID} # group id must be saved to an environment variable, can be done with `export GID=$(id -g)`
+    image: jsryu118/ros:humble
+
+  jazzy_x86:
+    build:
+      context: .
+      dockerfile: .dockerfiles/ros/Dockerfile.jazzy_x86
+      args:
+        - USER=${USER} 
+        - UID=${UID} # user id must be saved to an environment variable, can be done with `export UID=$(id -u)`
+        - GID=${GID} # group id must be saved to an environment variable, can be done with `export GID=$(id -g)`
+    image: jsryu118/ros:jazzy
+
+  jazzy_x86_cuda12_1:
+    build:
+      context: .
+      dockerfile: .dockerfiles/cuda/Dockerfile.jazzy_x86_cuda12_1
+      args:
+        - USER=${USER} 
+        - UID=${UID} # user id must be saved to an environment variable, can be done with `export UID=$(id -u)`
+        - GID=${GID} # group id must be saved to an environment variable, can be done with `export GID=$(id -g)`
+    image: jsryu118/ros:jazzy_cuda12.1
+    depends_on:
+      - jazzy_x86

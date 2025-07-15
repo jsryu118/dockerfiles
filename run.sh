@@ -1,7 +1,8 @@
 #!/bin/bash
-xhost +localhost
+# xhost +localhost
+# xhost +local:docker
 # NVIDIA 런타임을 사용하는 Docker 컨테이너 실행
-docker run --name slamNoetic -it --runtime nvidia --privileged \
+docker run --name morai -it --runtime nvidia --privileged \
 -v /dev:/dev \
 -v /media:/media \
 -v /tmp/.X11-unix:/tmp/.X11-unix \
@@ -11,5 +12,8 @@ docker run --name slamNoetic -it --runtime nvidia --privileged \
 -e NVIDIA_VISIBLE_DEVICES=all \
 -e NVIDIA_DRIVER_CAPABILITIES=all \
 --net host \
-osrf/ros:noetic-desktop \
+nvidia/cuda:11.8.0-cudnn8-devel-ubuntu20.04 \
 /bin/bash
+
+# nvidia/cuda:11.8.0-cudnn8-devel-ubuntu20.04
+

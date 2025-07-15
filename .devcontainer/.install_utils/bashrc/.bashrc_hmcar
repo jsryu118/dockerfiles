@@ -1,0 +1,13 @@
+# hmcar f1tenth extension
+source /opt/ros/humble/setup.bash
+source ~/ws/install/setup.bash
+
+alias colb='cd ~/ws && colcon build --symlink-install --packages-skip f110_gym --cmake-args -DCMAKE_BUILD_TYPE=Release'
+alias sauce='source /opt/ros/${ROS_DISTRO}/setup.bash && source /home/${USERNAME}/ws/install/setup.bash'
+alias scripz='cd /home/${USERNAME}/ws/src/race_stack/stack_master/scripts'
+export ROS_DOMAIN_ID=123
+export F1TENTH_CAR_NAME_MA=''
+export CAR_NAME='NUC1'
+
+sudo chmod 666 /dev/ttyACM0
+sudo chmod 666 /dev/ttyACM1
